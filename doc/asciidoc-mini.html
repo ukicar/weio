@@ -1,0 +1,1012 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.5.2" />
+<title>AsciiDoc Mini Manual</title>
+<style type="text/css">
+/* Debug borders */
+p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
+/*
+  border: 1px solid red;
+*/
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+tt {
+  color: navy;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  font-family: sans-serif;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+
+div.sectionbody {
+  font-family: serif;
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+
+pre {
+  padding: 0;
+  margin: 0;
+}
+
+span#author {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+span#email {
+}
+span#revnumber, span#revdate, span#revremark {
+  font-family: sans-serif;
+}
+
+div#footer {
+  font-family: sans-serif;
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+div#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+div#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+div#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid silver;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid silver;
+  background: #f4f4f4;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #dddddd;
+  color: #777777;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > div.content {
+  white-space: pre;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+
+@media print {
+  div#footer-badges { display: none; }
+}
+
+div#toc {
+  margin-bottom: 2.5em;
+}
+
+div#toctitle {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+/* Workarounds for IE6's broken and incomplete CSS2. */
+
+div.sidebar-content {
+  background: #ffffee;
+  border: 1px solid silver;
+  padding: 0.5em;
+}
+div.sidebar-title, div.image-title {
+  color: #527bbd;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 0.0em;
+  margin-bottom: 0.5em;
+}
+
+div.listingblock div.content {
+  border: 1px solid silver;
+  background: #f4f4f4;
+  padding: 0.5em;
+}
+
+div.quoteblock-attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock-content {
+  white-space: pre;
+}
+div.verseblock-attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+
+div.exampleblock-content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+/* IE6 sets dynamically generated links as visited. */
+div#toc a:visited { color: blue; }
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+window.onload = function(){asciidoc.footnotes();}
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([2-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  var cont = document.getElementById("content");
+  var noteholder = document.getElementById("footnotes");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      // Use [\s\S] in place of . so multi-line matches work.
+      // Because JavaScript has no s (dotall) regex flag.
+      note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      spans[i].innerHTML =
+        "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+        "' title='View footnote' class='footnote'>" + n + "</a>]";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+}
+
+}
+/*]]>*/
+</script>
+</head>
+<body>
+<div id="header">
+<h1>AsciiDoc Mini Manual</h1>
+<span id="author">Alexander Kozlov</span><br />
+<span id="email"><tt>&lt;<a href="mailto:akozlov@csc.kth.se">akozlov@csc.kth.se</a>&gt;</tt></span><br />
+<span id="revnumber">version 0.2,</span>
+<span id="revdate">Dec 2011</span>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>This document presents a rather small subsample of the original <tt>`AsciiDoc
+User Guide'' by _Stuart Rackham_ &lt;srackham@methods.co.nz&gt;, stressing the
+minimalism of AsciiDoc formatting.  For compactness, each element is
+pesented only once. No example code is given, if possible. The reader
+is supposed to compare the source text file link:asciidoc-mini.txt[]
+and the result `asciidoc-mini.html</tt> document himself.</p></div>
+<div class="paragraph"><p>Formatting rules of AsciiDoc are very strict but simple. For example,
+the Header must start on the first line of the document and must begin
+with a document Title. Author and Revision lines immediately follow the
+title. The author line contains the author&#8217;s name optionally followed
+by the author&#8217;s email address. The email address comes last and must be
+enclosed in angle &lt;&gt; brackets.</p></div>
+<div class="paragraph"><p>The Preamble is an optional untitled section body between the document
+Header and the first Section title. It may consist of one or several
+Paragraphs each terminated by a blank line.</p></div>
+</div>
+</div>
+<h2 id="X1">Sections</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Different section levels are supported:</p></div>
+</div>
+<h2 id="_level_one_section">Level One Section</h2>
+<div class="sectionbody">
+<h3 id="_level_two_section">Level Two Section</h3><div style="clear:left"></div>
+<h4 id="_level_three_section">Level Three Section</h4>
+<h5 id="_level_four_section">Level Four Section</h5>
+<div class="paragraph"><p>The sections will not be numbered in the output <tt>asciidoc-mini.html</tt> document
+if you simply run</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>asciidoc asciidoc-mini.txt</tt></pre>
+</div></div>
+<div class="paragraph"><p>To have sections with numbers, use option <tt>-a numbered</tt></p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>asciidoc -a numbered asciidoc-mini.txt</tt></pre>
+</div></div>
+<div class="paragraph"><p><strong>Note:</strong> <tt>Level Four Section</tt> titles are not numbered.</p></div>
+<h3 id="_two_line_titles">Two line titles</h3><div style="clear:left"></div>
+<div class="paragraph"><p>A two line title consists of a title line, starting hard against the left
+margin, and an underline which spans the width of the preceding title
+(plus-minus 1&#8212;3 characters).</p></div>
+<h3 id="_one_line_titles">One line titles</h3><div style="clear:left"></div>
+<div class="paragraph"><p>One line titles consist of a single line delimited by "=" characters:</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>= Document Title (level 0) =
+== Section title (level 1) ==
+=== Section title (level 2) ===
+==== Section title (level 3)
+===== Section title (level 4) =====</tt></pre>
+</div></div>
+<div class="paragraph"><p><strong>Note:</strong> The trailing delimiter is optional.</p></div>
+</div>
+<h2 id="_text_formatting">Text Formatting</h2>
+<div class="sectionbody">
+<h3 id="_quoted_text">Quoted Text</h3><div style="clear:left"></div>
+<div class="paragraph"><p><em>Emphasized text</em> ('Emphasized text', space delimited), <em>emphasized text</em>
+(_emphasized text_) or emphasiz<em>E</em>d text (no boundary constraints,
+may be placed anywhere in the text).</p></div>
+<div class="paragraph"><p><strong>Strong text</strong> (*Strong text*) or strong t<strong>E</strong>xt.</p></div>
+<div class="paragraph"><p><tt>Monospaced text</tt> (`Monospaced text`), <tt>monospaced text</tt> (+monospaced
+text+) or mo<tt>N</tt>ospaced text.</p></div>
+<div class="paragraph"><p>``Quoted text'' (\&#8220;Quoted text&#8221;) or simply "quoted text".</p></div>
+<h3 id="_rulers">Rulers</h3><div style="clear:left"></div>
+<div class="paragraph"><p>A line of four or more \' (apostrophe) characters will generate an HTML
+ruler (<tt>&lt;/hr&gt;</tt>) tag,</p></div>
+<hr />
+<div class="paragraph"><p>like the one above.</p></div>
+<h3 id="_listing_blocks">Listing Blocks</h3><div style="clear:left"></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello World!\n");
+    exit(0);
+}</tt></pre>
+</div></div>
+<h3 id="_sidebar_blocks">Sidebar Blocks</h3><div style="clear:left"></div>
+<div class="sidebarblock">
+<div class="sidebar-content">
+<div class="paragraph"><p>A sidebar block.</p></div>
+<div class="paragraph"><p>Any text block element except a sidebar can be placed inside a sidebar.</p></div>
+</div></div>
+<h3 id="_example_blocks">Example Blocks</h3><div style="clear:left"></div>
+<div class="exampleblock">
+<div class="title">Example 1: testing</div>
+<div class="exampleblock-content">
+<div class="paragraph"><p>an Example Block.</p></div>
+</div></div>
+<h3 id="_literal_paragraph">Literal Paragraph</h3><div style="clear:left"></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>    A Literal paragraph consists of one or more lines of text, where at
+least the first line is indented by one or more space or tab characters.</tt></pre>
+</div></div>
+<h3 id="_literal_blocks">Literal Blocks</h3><div style="clear:left"></div>
+<div class="literalblock">
+<div class="content">
+<pre><tt>Literal Blocks behave just like Literal Paragraphs except you don't have
+to indent the contents.</tt></pre>
+</div></div>
+<h3 id="_comment_blocks">Comment Blocks</h3><div style="clear:left"></div>
+<div class="paragraph"><p>The contents of Comment Blocks are not processed. Here&#8217;s an example.
+The text between parentheses is commented out: (</p></div>
+<div class="paragraph"><p>). What was above is shown below as a Listing Block:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>The text between parentheses is commented out: (
+//////////////////////////////////////////
+CommentBlock contents are not processed by
+asciidoc(1).
+//////////////////////////////////////////
+).</tt></pre>
+</div></div>
+<div class="paragraph"><p>Single line comments are also possible:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>// This is a comment.</tt></pre>
+</div></div>
+<h3 id="_admonition_paragraphs">Admonition Paragraphs</h3><div style="clear:left"></div>
+<div class="paragraph"><p><tt>NOTE:</tt>, <tt>TIP:</tt>, <tt>IMPORTANT:</tt>, <tt>WARNING:</tt> or <tt>CAUTION:</tt> at the start of
+a line have special meaning. They start admonition paragraphs or blocks.
+For example, Notes:</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">A one paragraph note</td>
+</tr></table>
+</div>
+<div class="paragraph"><p>or</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>A block note.</p></div>
+<div class="paragraph"><p>It can span multiple paragraphs and include other blocks, e.g., Lists.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<h2 id="_lists">Lists</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+Bulleted list items start with an asterisk
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+or a dash
+</p>
+</li>
+<li>
+<p>
+followed by a space or tab character.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Ordered list items start with
+</p>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+number
+</p>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+or letter.
+</p>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Explicit
+</p>
+</li>
+<li>
+<p>
+numbering
+</p>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+of the list items
+</p>
+</li>
+<li>
+<p>
+is optional.
+</p>
+</li>
+</ol></div>
+</li>
+</ol></div>
+</li>
+</ol></div>
+</li>
+</ol></div>
+</li>
+</ul></div>
+<div class="paragraph"><p>Vertical Labeled Lists consist of</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Item text
+</dt>
+<dd>
+<p>
+  and its description,
+</p>
+</dd>
+<dt class="hdlist1">
+item
+</dt>
+<dd>
+<p>
+  and description.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Horizontal labeled lists differ from vertical labeled lists in that</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<strong>the list item</strong>
+</dt>
+<dd>
+<p>
+and the label,
+</p>
+</dd>
+<dt class="hdlist1">
+list
+</dt>
+<dd>
+<p>
+and label
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>sit side-by-side on the same line.</p></div>
+</div>
+<h2 id="_tables">Tables</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Simple table:</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="50%" />
+<col width="50%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">1</p></td>
+<td align="left" valign="top"><p class="table">2</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">3</p></td>
+<td align="left" valign="top"><p class="table">4</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">5</p></td>
+<td align="left" valign="top"><p class="table">6</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Table with header and footer:</p></div>
+<div class="tableblock">
+<table rules="all"
+width="50%"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Column 1 </th>
+<th align="left" valign="top">  Column 2   </th>
+<th align="left" valign="top">  Column 3</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td align="left" valign="top"><p class="table">Column 1</p></td>
+<td align="left" valign="top"><p class="table">Column 2</p></td>
+<td align="left" valign="top"><p class="table">Column 3</p></td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">1</p></td>
+<td align="left" valign="top"><p class="table">Item 1</p></td>
+<td align="left" valign="top"><p class="table"></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">2</p></td>
+<td align="left" valign="top"><p class="table"></p></td>
+<td align="left" valign="top"><p class="table">Item 2</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">3</p></td>
+<td align="left" valign="top"><p class="table">Item 3</p></td>
+<td align="left" valign="top"><p class="table"></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">6</p></td>
+<td colspan="2" align="left" valign="top"><p class="table">Three items</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>Cell spans, alignments and styles:</p></div>
+<div class="tableblock">
+<table rules="all"
+width="25%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><em>1</em></p></td>
+<td align="right" valign="top"><p class="table"><strong>2</strong></p></td>
+<td align="center" valign="top"><p class="table">3</p></td>
+<td align="right" valign="top"><p class="table"><strong>4</strong></p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table"><em>5</em></p></td>
+<td colspan="2" rowspan="2" align="center" valign="middle"><p class="table"><tt>6</tt></p></td>
+<td rowspan="3" align="left" valign="bottom"><p class="table"><tt>7</tt></p></td>
+</tr>
+<tr>
+<td align="center" valign="top"><p class="table"><em>8</em></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><em>9</em></p></td>
+<td colspan="2" align="right" valign="top"><p class="table"><tt>10</tt></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Several types of references are available:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+standard <tt>http:</tt>, <tt>https:</tt>, <tt>ftp:</tt>, <tt>file:</tt>, <tt>mailto:</tt> and <tt>callto:</tt>
+URLs in the form <a href="http://www.methods.co.nz/asciidoc/">The AsciiDoc home
+page</a> or <a href="http://www.methods.co.nz/asciidoc/">http://www.methods.co.nz/asciidoc/</a>
+</p>
+</li>
+<li>
+<p>
+link to a local document like <a href="asciidoc-mini.txt">asciidoc-mini.txt</a> or <a href="asciidoc-mini.txt">this</a>
+</p>
+</li>
+<li>
+<p>
+internal cross-reference, e.g. to <a href="#X1">Sections</a>
+</p>
+</li>
+</ul></div>
+</div>
+<h2 id="_images">Images</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Images like <span class="image">
+<img src="images/icons/caution.png" alt="images/icons/caution.png" />
+</span>
+<span class="image">
+<img src="images/icons/example.png" alt="images/icons/example.png" />
+</span> <span class="image">
+<img src="images/icons/important.png" alt="images/icons/important.png" />
+</span>
+<span class="image">
+<img src="images/icons/note.png" alt="images/icons/note.png" />
+</span> <span class="image">
+<img src="images/icons/tip.png" alt="images/icons/tip.png" />
+</span> or
+<span class="image">
+<img src="images/icons/warning.png" alt="images/icons/warning.png" />
+</span> can be included anywhere in the text.</p></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph"><p>Standard icons for <tt>NOTE:</tt>, <tt>TIP:</tt>, <tt>IMPORTANT:</tt>, <tt>WARNING:</tt> or <tt>CAUTION:</tt>
+paragraphs and blocks are included automatically if the document is
+built with option <tt>-a icons</tt>:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>asciidoc -a icons asciidoc-mini.txt</tt></pre>
+</div></div>
+<div class="paragraph"><p>Put corresponding images to the <tt>./images/icons/</tt> directory or specify
+path to the icons with option <tt>-a iconsdir</tt>.</p></div>
+</td>
+</tr></table>
+</div>
+</div>
+<h2 id="_table_of_contents">Table of Contents</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Table of Contents is added automatically to the start of the document
+if option <tt>-a toc</tt> is used</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>asciidoc -a toc asciidoc-mini.txt</tt></pre>
+</div></div>
+</div>
+<h2 id="_final_remarks">Final Remarks</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Part of AsciiDoc syntax shown here presents the most common document
+formatting functions. Preference is given to those markup commands which
+look natural in the original ASCII text file. They can even improve
+rather than degrade its readablity.</p></div>
+<div class="paragraph"><p>For the complete list of AsciiDoc functions, see the official
+<a href="http://www.methods.co.nz/asciidoc/userguide.html">AsciiDoc User Guide</a>.</p></div>
+<div class="paragraph"><p>This document is supposed to be built by the following command</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><tt>asciidoc -a toc -a icons -a numbered asciidoc-mini.txt</tt></pre>
+</div></div>
+<div class="paragraph"><p>with standard icons <tt>/etc/asciidoc/images/icons/*</tt> copied to
+<tt>./images/icons/</tt> under the current directory.</p></div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Version 0.2<br />
+Last updated 2013-01-18 00:32:05 CEST
+</div>
+</div>
+</body>
+</html>

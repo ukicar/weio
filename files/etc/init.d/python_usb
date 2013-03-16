@@ -1,0 +1,12 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2006 OpenWrt.org
+
+START=70
+start() {
+    mkdir -p /mnt/usb
+
+    [ -d /mnt/usb ] && {
+        echo "Mounting Python USB key"    
+        /bin/mount -t ext2 /dev/sda1 /mnt/usb
+    }
+}

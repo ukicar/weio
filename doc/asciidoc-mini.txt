@@ -1,0 +1,343 @@
+AsciiDoc Mini Manual
+====================
+Alexander Kozlov <akozlov@csc.kth.se>
+Version 0.2, Dec 2011
+
+This document presents a rather small subsample of the original ``AsciiDoc
+User Guide'' by _Stuart Rackham_ <srackham@methods.co.nz>, stressing the
+minimalism of AsciiDoc formatting.  For compactness, each element is
+pesented only once. No example code is given, if possible. The reader
+is supposed to compare the source text file link:asciidoc-mini.txt[]
+and the result `asciidoc-mini.html` document himself.
+
+Formatting rules of AsciiDoc are very strict but simple. For example,
+the Header must start on the first line of the document and must begin
+with a document Title. Author and Revision lines immediately follow the
+title. The author line contains the author's name optionally followed
+by the author's email address. The email address comes last and must be
+enclosed in angle <> brackets.
+
+The Preamble is an optional untitled section body between the document
+Header and the first Section title. It may consist of one or several
+Paragraphs each terminated by a blank line.
+
+[[X1]]
+
+Sections
+--------
+
+Different section levels are supported:
+
+Level One Section
+-----------------
+
+Level Two Section
+~~~~~~~~~~~~~~~~~
+
+Level Three Section
+^^^^^^^^^^^^^^^^^^^
+
+Level Four Section
+++++++++++++++++++
+
+The sections will not be numbered in the output `asciidoc-mini.html` document
+if you simply run
+
+--------------------------------------------------------------------------------
+asciidoc asciidoc-mini.txt
+--------------------------------------------------------------------------------
+
+To have sections with numbers, use option `-a numbered`
+
+--------------------------------------------------------------------------------
+asciidoc -a numbered asciidoc-mini.txt
+--------------------------------------------------------------------------------
+
+*Note:* `Level Four Section` titles are not numbered.
+
+
+Two line titles
+~~~~~~~~~~~~~~~
+
+A two line title consists of a title line, starting hard against the left
+margin, and an underline which spans the width of the preceding title
+(plus-minus 1--3 characters).
+
+
+=== One line titles
+
+One line titles consist of a single line delimited by "=" characters:
+
+  = Document Title (level 0) =
+  == Section title (level 1) ==
+  === Section title (level 2) ===
+  ==== Section title (level 3)
+  ===== Section title (level 4) =====
+
+*Note:* The trailing delimiter is optional.
+
+Text Formatting
+---------------
+
+Quoted Text
+~~~~~~~~~~~
+
+'Emphasized text' (\'Emphasized text', space delimited), _emphasized text_
+(\_emphasized text_) or emphasiz__E__d text (no boundary constraints,
+may be placed anywhere in the text).
+
+*Strong text* (\*Strong text*) or strong t**E**xt.
+
+`Monospaced text` (\`Monospaced text`), +monospaced text+ (\+monospaced
+text+) or mo++N++ospaced text.
+
+``Quoted text'' (\``Quoted text'') or simply "quoted text".
+
+
+Rulers
+~~~~~~
+
+A line of four or more \' (apostrophe) characters will generate an HTML
+ruler (`</hr>`) tag,
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+like the one above.
+
+
+Listing Blocks
+~~~~~~~~~~~~~~
+
+--------------------------------------
+#include <stdio.h>
+
+int main() {
+    printf("Hello World!\n");
+    exit(0);
+}
+--------------------------------------
+
+
+Sidebar Blocks
+~~~~~~~~~~~~~~
+
+*******************************************************************
+A sidebar block.
+
+Any text block element except a sidebar can be placed inside a sidebar.
+*******************************************************************
+
+
+Example Blocks
+~~~~~~~~~~~~~~
+
+.testing
+==================================================================
+an Example Block.
+==================================================================
+
+
+Literal Paragraph
+~~~~~~~~~~~~~~~~~
+
+    A Literal paragraph consists of one or more lines of text, where at
+least the first line is indented by one or more space or tab characters.
+
+
+Literal Blocks
+~~~~~~~~~~~~~~
+
+......................................................................
+Literal Blocks behave just like Literal Paragraphs except you don't have
+to indent the contents.
+......................................................................
+
+
+Comment Blocks
+~~~~~~~~~~~~~~
+
+The contents of Comment Blocks are not processed. Here's an example.
+The text between parentheses is commented out: (
+//////////////////////////////////////////
+CommentBlock contents are not processed by
+asciidoc(1).
+//////////////////////////////////////////
+). What was above is shown below as a Listing Block:
+
+---------------------------------------------------------------------
+The text between parentheses is commented out: (
+//////////////////////////////////////////
+CommentBlock contents are not processed by
+asciidoc(1).
+//////////////////////////////////////////
+).
+---------------------------------------------------------------------
+
+Single line comments are also possible:
+
+// This is a comment.
+
+--------------------------------------------------------------------------------
+// This is a comment.
+--------------------------------------------------------------------------------
+
+
+Admonition Paragraphs
+~~~~~~~~~~~~~~~~~~~~~
+
+`NOTE:`, `TIP:`, `IMPORTANT:`, `WARNING:` or `CAUTION:` at the start of
+a line have special meaning. They start admonition paragraphs or blocks.
+For example, Notes:
+
+NOTE: A one paragraph note
+
+or
+
+[NOTE]
+=====================================================================
+A block note.
+
+It can span multiple paragraphs and include other blocks, e.g., Lists.
+
+=====================================================================
+
+
+Lists
+-----
+
+* Bulleted list items start with an asterisk
+  - or a dash
+  - followed by a space or tab character.
+
+* Ordered list items start with 
+  1. number 
+     a. or letter.
+
+. Explicit
+. numbering
+  .. of the list items
+  .. is optional.
+
+Vertical Labeled Lists consist of
+
+Item text::
+  and its description,
+
+item::
+  and description.
+
+Horizontal labeled lists differ from vertical labeled lists in that 
+
+*the list item*:: and the label,
+
+list:: and label
+
+sit side-by-side on the same line.
+
+
+Tables
+------
+
+Simple table:
+
+|=======
+|1   |2
+| 3  |4
+|   5| 6
+|=======
+
+Table with header and footer:
+
+[width="50%",frame="topbot",options="header,footer"]
+|=======================================
+|Column 1 |  Column 2   |  Column 3
+|1        |  Item 1     |
+|2        |             |  Item 2
+|3        |  Item 3     |
+|6      2+|        Three items
+|Column 1 |  Column 2   |  Column 3
+|=======================================
+
+Cell spans, alignments and styles:
+
+[cols="e,m,^,>s",width="25%"]
+|============================
+|1 >s|2 |3 |4
+^|5 2.2+^.^|6 .3+<.>m|7
+^|8
+|9 2+>|10
+|============================
+
+References
+----------
+
+Several types of references are available:
+
+* standard `http:`, `https:`, `ftp:`, `file:`, `mailto:` and `callto:`
+URLs in the form http://www.methods.co.nz/asciidoc/[The AsciiDoc home
+page] or http://www.methods.co.nz/asciidoc/[]
+
+* link to a local document like link:asciidoc-mini.txt[] or link:asciidoc-mini.txt[this]
+
+* internal cross-reference, e.g. to <<X1, Sections>>
+
+
+Images
+------
+
+Images like image:images/icons/caution.png[]
+image:images/icons/example.png[] image:images/icons/important.png[]
+image:images/icons/note.png[] image:images/icons/tip.png[] or
+image:images/icons/warning.png[] can be included anywhere in the text.
+
+[TIP] 
+================================================================================
+Standard icons for `NOTE:`, `TIP:`, `IMPORTANT:`, `WARNING:` or `CAUTION:`
+paragraphs and blocks are included automatically if the document is
+built with option `-a icons`:
+
+--------------------------------------------------------------------------------
+asciidoc -a icons asciidoc-mini.txt
+--------------------------------------------------------------------------------
+
+Put corresponding images to the `./images/icons/` directory or specify
+path to the icons with option `-a iconsdir`.
+
+================================================================================
+
+
+Table of Contents
+-----------------
+
+Table of Contents is added automatically to the start of the document
+if option `-a toc` is used
+
+--------------------------------------------------------------------------------
+asciidoc -a toc asciidoc-mini.txt
+--------------------------------------------------------------------------------
+
+
+Final Remarks
+-------------
+
+Part of AsciiDoc syntax shown here presents the most common document
+formatting functions. Preference is given to those markup commands which
+look natural in the original ASCII text file. They can even improve
+rather than degrade its readablity.
+
+For the complete list of AsciiDoc functions, see the official
+http://www.methods.co.nz/asciidoc/userguide.html[AsciiDoc User Guide].
+
+This document is supposed to be built by the following command
+
+--------------------------------------------------------------------------------
+asciidoc -a toc -a icons -a numbered asciidoc-mini.txt
+--------------------------------------------------------------------------------
+
+with standard icons `/etc/asciidoc/images/icons/*` copied to
+`./images/icons/` under the current directory.
+
+
+////////////////////////////////////////////////////////////////////////////////
+End of document
+////////////////////////////////////////////////////////////////////////////////

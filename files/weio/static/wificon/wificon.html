@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>WEIO &middot; Configurator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+
+        /* Custom container */
+        .container-narrow {
+            margin: 0 auto;
+            max-width: 700px;
+        }
+        .container-narrow > hr {
+            margin: 30px 0;
+        }
+
+        /* Main marketing message and sign up button */
+        .jumbotron {
+            margin: 60px 0;
+            text-align: center;
+        }
+        .jumbotron h1 {
+            font-size: 72px;
+            line-height: 1;
+        }
+        .jumbotron .btn {
+            font-size: 21px;
+            padding: 14px 24px;
+        }
+
+        /* Supporting marketing content */
+        .marketing {
+            margin: 60px 0;
+        }
+        .marketing p + h4 {
+            margin-top: 28px;
+        }
+    </style>
+    
+    <link href="../bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../bootstrap/css/font-awesome.min.css" rel="stylesheet" >
+    <link href="../bootstrap/css/bootstrap-rowlink.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<div class="container-narrow">
+
+    <div class="masthead">
+<!--
+        <ul class="nav nav-pills pull-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+-->
+        <h3 class="muted">WEIO CONFIGURATOR</h3>
+    </div>
+
+    <hr>
+
+    <div class="jumbotron">
+        <h1>WiFi Network Configuration</h1>
+        <p class="lead">Select network to connect to from the list of detected networks</p>
+        <button id="btn-app" class="btn btn-large btn-success" disabled="disabled">Go to Application</button>
+        <button id="btn-ap" class="btn btn-large btn-success" disabled="disabled">Go to AP mode</button>
+    </div>
+
+    <hr>
+
+    <div class="row-fluid marketing">
+        <div class="span12">
+            <!-- ><h4>Detected networks :</h4> -->
+
+            <p id="scan-spin" align="center"><i class="icon-spinner icon-spin icon-4x"></i> Scanning for available networks...</p>
+
+            <!-- <pre id="cfgrsp"></pre> -->
+
+            <div id="cntb"></div>
+        </div>
+    </div> <!-- "row-fluid marketing -->
+
+
+
+<!-- Modal for Goto STA mode -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-header">
+        <button id="modal-x" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">:: WEIO :: WiFi Network Connection</h3>
+    </div>
+    <div class="modal-body">
+        <!-- <p>Enter WiFi Network Password</p> -->
+	    <form class="form-horizontal">
+		<div class="control-group">
+            <label class="control-label" for="inputPassword"></label>
+
+			<div class="controls">
+				<input type="password" id="input-passwd" placeholder="Password">
+			</div>
+	    </div>
+	    </form>
+    </div>
+    <div id="modal-footer" class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary" id="modcon" >Connect</button>
+    </div>
+</div>
+
+
+<!-- Modal for Goto AP mode -->
+<div id="gone-modal" class="modal hide fade" data-backdrop="static">
+    <div class="modal-header">
+        <h3>AND WE'RE GONE...</h3>
+    </div>
+    <div class="modal-body">
+        <h4>YOU HAVE TEMPORARELY LOST CONNECTION WITH WEIO</h4>
+        <p>This is normal and expected behavior, as you configured it for an other network,
+        while you are stying on the current network.</p>
+        <p>Switch your client device to the same network as WEIO in order to reconnect to it.</p>
+    </div>
+</div>
+
+
+
+    <hr>
+
+    <div class="footer">
+        <p>&copy; WEIO - Drasko DRASKOVIC & Uros PETREVSKI</p>
+    </div>
+
+</div> <!-- /container -->
+
+
+    <!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<script src="../jquery/jquery-1.9.1.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src="../bootstrap/js/bootstrap-rowlink.min.js"></script>
+    <script src="../sockjs-client/sockjs-0.3.min.js"></script>
+
+    <!-- External JS -->
+    <script src="../wificon/wificon.js"></script>
+
+
+</body>
+</html>
